@@ -13,9 +13,16 @@ class AURA_API AAuraCharacterBase : public ACharacter
 
 public:
 	AAuraCharacterBase();
-	
+
 protected:
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditAnywhere, Category=Combatj)
+	TObjectPtr<USkeletalMeshComponent> Weapon;
 
+private:
+	FName WeaponHandSocket = "RightHandSocket";
+
+public:
+	FORCEINLINE FName GetWeaponHandSocketName() const { return WeaponHandSocket; }
 };
