@@ -21,7 +21,7 @@ protected:
 	TObjectPtr<USkeletalMeshComponent> Weapon;
 
 private:
-	FName WeaponHandSocket = "RightHandSocket";
+	FName WeaponHandSocket{WeaponHandSocket};
 
 public:
 	FORCEINLINE FName GetWeaponHandSocketName() const { return WeaponHandSocket; }
