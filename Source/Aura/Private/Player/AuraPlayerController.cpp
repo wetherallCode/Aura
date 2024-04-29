@@ -1,5 +1,16 @@
 // Copyright Lone Moose Games
 
 
-#include "Controllers/AuraPlayerController.h"
+#include "Player/AuraPlayerController.h"
 
+AAuraPlayerController::AAuraPlayerController()
+{
+	bReplicates = true;
+}
+
+void AAuraPlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	 s
+}
