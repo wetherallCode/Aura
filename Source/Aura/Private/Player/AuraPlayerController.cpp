@@ -12,5 +12,10 @@ void AAuraPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	 s
+	check(AuraContext);
+
+	UEnhancedLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedLocalPlayerSubsystemc>(
+		GetLocalPlayer());
+	// UEnahancedLocalPlayerSubsystem* Subsystem = GetLocalPlayer()->GetSubsystem<UEnahancedLocalPlayerSubsystem>();
+	check(Subsystem);
 }

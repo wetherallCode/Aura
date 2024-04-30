@@ -6,6 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "AuraPlayerController.generated.h"
 
+class UInputMappingContext;
 /**
  * 
  */
@@ -19,4 +20,8 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+
+private:
+	UPROPERTY(EditAnywhere, Category=Input)
+	TObjectPtr<UInputMappingContext> AuraContext;
 };
