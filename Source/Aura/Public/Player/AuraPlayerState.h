@@ -6,6 +6,8 @@
 #include "GameFramework/PlayerState.h"
 #include "AuraPlayerState.generated.h"
 
+class UAttributeSet;
+class UAbilitySystemComponent;
 /**
  * 
  */
@@ -16,4 +18,11 @@ class AURA_API AAuraPlayerState : public APlayerState
 
 public:
 	AAuraPlayerState();
+
+protected:
+	UPROPERTY()
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
+
+	UPROPERTY()
+	TObjectPtr<UAttributeSet> AttributeSet;
 };
