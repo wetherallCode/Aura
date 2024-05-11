@@ -17,7 +17,6 @@ class AURA_API AAuraCharacterBase : public ACharacter, public IAbilitySystemInte
 
 public:
 	AAuraCharacterBase();
-	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 protected:
 	virtual void BeginPlay() override;
@@ -34,6 +33,11 @@ protected:
 private:
 	FName WeaponHandSocket{WeaponHandSocket};
 
+	//Getters & Setters
 public:
 	FORCEINLINE FName GetWeaponHandSocketName() const { return WeaponHandSocket; }
+
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+
+	FORCEINLINE UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 };
