@@ -18,4 +18,8 @@ public:
 	AAuraCharacter();
 
 	virtual void BeginPlay() override;
+	void InitAbilityActorInfo();
+
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
 };
