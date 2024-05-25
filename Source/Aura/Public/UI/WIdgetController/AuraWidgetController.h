@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AuraWidgetController.generated.h"
 
+class AAuraPlayerState;
 class UAttributeSet;
 class UAbilitySystemComponent;
 
@@ -39,7 +40,6 @@ struct FWidgetControllerParams
 	TObjectPtr<UAttributeSet> AttributeSet = nullptr;
 };
 
-
 UCLASS()
 class AURA_API UAuraWidgetController : public UObject
 {
@@ -48,6 +48,9 @@ class AURA_API UAuraWidgetController : public UObject
 public:
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetControllerParams(const FWidgetControllerParams& WidgetControllerParams);
+	virtual void BroadCastInitialValues();
+
+	//Getters and Setters`
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category="WidgetController")

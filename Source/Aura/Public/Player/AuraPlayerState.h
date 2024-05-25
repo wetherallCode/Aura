@@ -29,7 +29,6 @@ protected:
 
 	virtual void OnRep_PlayerState();
 
-	//Getters and Setters`
 public:
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
