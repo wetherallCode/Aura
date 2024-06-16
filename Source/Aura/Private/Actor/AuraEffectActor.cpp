@@ -26,7 +26,7 @@ void AAuraEffectActor::OnOverlap(AActor* TargetActor)
 
 	if (DurationEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
 	{
-		for (auto& EffectClass : DurationGameplayEffectClasses)
+		for (const auto& EffectClass : DurationGameplayEffectClasses)
 		{
 			ApplyEffectToTarget(TargetActor, EffectClass);
 		}
@@ -46,7 +46,7 @@ void AAuraEffectActor::OnEndOverlap(AActor* TargetActor)
 
 	if (DurationEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnEndOverlap)
 	{
-		for (auto& EffectClass : DurationGameplayEffectClasses)
+		for (const auto& EffectClass : DurationGameplayEffectClasses)
 		{
 			ApplyEffectToTarget(TargetActor, EffectClass);
 		}
@@ -79,7 +79,7 @@ void AAuraEffectActor::OnEndOverlap(AActor* TargetActor)
 	}
 }
 
-void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass)
+void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, const TSubclassOf<UGameplayEffect> GameplayEffectClass)
 {
 	UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(TargetActor);
 
@@ -96,7 +96,7 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 	EffectContextHandle.AddSourceObject(this);
 
 	const FGameplayEffectSpecHandle EffectSpecHandle = TargetASC->MakeOutgoingSpec(
-		GameplayEffectClass, 1.f,
+		GameplayEffectClass, ActorLevel,
 		EffectContextHandle);
 
 

@@ -29,9 +29,15 @@ void AAuraCharacter::InitAbilityActorInfo()
 {
 	if (AAuraPlayerState* AuraPlayerState = GetPlayerState<AAuraPlayerState>())
 	{
+		/*The Player State constructs the Ability System component; so initialize the AbilityActorInfo first*/
 		AuraPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AuraPlayerState, this);
+		/*This binds callback delegates to the Player*/
+		Cast<UAuraAbilitySystemComponent>(AuraPlayerState->GetAbilitySystemComponent())->AbilityActorInfoSet();
+		/*Then set the ability system component*/
 		AbilitySystemComponent = AuraPlayerState->GetAbilitySystemComponent();
+		/*Then set the Attribute Set*/
 		AttributeSet = AuraPlayerState->GetAttributeSet();
+
 		if (AAuraPlayerController* AuraPlayerController = Cast<AAuraPlayerController>(GetController()))
 		{
 			if (AAuraHUD* AuraHUD = Cast<AAuraHUD>(AuraPlayerController->GetHUD()))
@@ -48,11 +54,15 @@ void AAuraCharacter::InitAbilityActorInfo()
 void AAuraCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
+
+	/*Initialize AbilityActorInfo for the server*/
 	InitAbilityActorInfo();
 }
 
 void AAuraCharacter::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
+
+	/*Initialize AbilityActorInfo for the client*/
 	InitAbilityActorInfo();
 }

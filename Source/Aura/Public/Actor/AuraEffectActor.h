@@ -47,6 +47,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Effects")
 	bool bDestroyOnEffectRemoval{false};
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Effects")
+	float ActorLevel{1.f};
+
 	UFUNCTION(BlueprintCallable)
 	void ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass);
 
