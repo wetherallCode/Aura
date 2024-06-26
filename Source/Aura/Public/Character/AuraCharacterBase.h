@@ -7,6 +7,7 @@
 #include "GameFramework/Character.h"
 #include "AuraCharacterBase.generated.h"
 
+class UGameplayEffect;
 class UAttributeSet;
 class UAbilitySystemComponent;
 
@@ -32,10 +33,20 @@ protected:
 
 	virtual void InitAbilityActorInfo();
 
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category=Attributes)
+	TSubclassOf<UGameplayEffect> DefaultPrimaryAttributes;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category=Attributes)
+	TSubclassOf<UGameplayEffect> DefaultSecondaryAttributes;
+
+	void ApplyEffectToSelf(const TSubclassOf<UGameplayEffect> GameplayEffectClass, const float Level = 1.f) const;
+
+	void InitializeDefaultAttributes() const;
+
 private:
 	FName WeaponHandSocket{WeaponHandSocket};
 
-	//Getters & Setters
+	/*Getters & Setters*/
 public:
 	FORCEINLINE FName GetWeaponHandSocketName() const { return WeaponHandSocket; }
 

@@ -37,7 +37,6 @@ void AAuraCharacter::InitAbilityActorInfo()
 		AbilitySystemComponent = AuraPlayerState->GetAbilitySystemComponent();
 		/*Then set the Attribute Set*/
 		AttributeSet = AuraPlayerState->GetAttributeSet();
-
 		if (AAuraPlayerController* AuraPlayerController = Cast<AAuraPlayerController>(GetController()))
 		{
 			if (AAuraHUD* AuraHUD = Cast<AAuraHUD>(AuraPlayerController->GetHUD()))
@@ -57,6 +56,7 @@ void AAuraCharacter::PossessedBy(AController* NewController)
 
 	/*Initialize AbilityActorInfo for the server*/
 	InitAbilityActorInfo();
+	InitializeDefaultAttributes();
 }
 
 void AAuraCharacter::OnRep_PlayerState()
