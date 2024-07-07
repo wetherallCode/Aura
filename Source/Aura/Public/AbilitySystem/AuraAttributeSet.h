@@ -106,6 +106,7 @@ public:
 	void OnRep_Vigor(const FGameplayAttributeData& OldVigor) const;
 	//~ End Vigor Attribute
 
+
 	/**
 	 * Secondary Attributes - RPG Style Attributes
 	 */
@@ -211,9 +212,11 @@ public:
 	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const;
 	//~ End MaxMana Attribute
 
+
 	/**
 	 * Vital Attributes
 	 */
+
 
 	//~ Start Health Attribute
 	UPROPERTY(ReplicatedUsing=OnRep_Health, BlueprintReadOnly, Category = "Vital Attributes")
