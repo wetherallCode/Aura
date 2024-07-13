@@ -13,6 +13,7 @@
  	GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
  	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
 
+
 USTRUCT(BlueprintType)
 struct FEffectProperties
 {
@@ -49,6 +50,9 @@ struct FEffectProperties
 	FGameplayEffectContextHandle EffectContextHandle;
 };
 
+template <class T>
+using TStaticFunctionPtr = typename TBaseStaticDelegateInstance<T, FDefaultTSDelegateUserPolicy>::FFuncPtr;
+
 UCLASS()
 class AURA_API UAuraAttributeSet : public UAttributeSet
 {
@@ -62,6 +66,10 @@ public:
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
+
+	TMap<FGameplayTag, TStaticFunctionPtr<FGameplayAttribute()>>
+	TagsToAttributes;
+
 	/**
 	 * Primary Attributes - RPG Style Attributes
 	 */

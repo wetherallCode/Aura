@@ -8,6 +8,7 @@
 #include "Interaction/CombatInterface.h"
 #include "AuraCharacterBase.generated.h"
 
+class UGameplayAbility;
 class UGameplayEffect;
 class UAttributeSet;
 class UAbilitySystemComponent;
@@ -47,9 +48,13 @@ protected:
 
 	void InitializeDefaultAttributes() const;
 
+	void AddCharacterAbilities() const;
+
 private:
 	FName WeaponHandSocket{WeaponHandSocket};
 
+	UPROPERTY(EditAnywhere, Category=Abilities)
+	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 	/*Getters & Setters*/
 public:
 	FORCEINLINE FName GetWeaponHandSocketName() const { return WeaponHandSocket; }
